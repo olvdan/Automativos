@@ -1,34 +1,51 @@
 package com.automativos.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.automativos.model.Equipamentos;
-import com.automativos.repository.EquipamentosRepository;
+import com.automativos.service.EquipamentosService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/equipamentos")
 public class EquipamentosController {
-	
-	@Autowired
-	private EquipamentosRepository equipamentosRepository;
 
-	@GetMapping
-	public List<Equipamentos> listar() {
-		return equipamentosRepository.findAll();
-	}
+    @Autowired
+    private EquipamentosService equipamentosService;
 
-	@PostMapping
-	@ResponseStatus (HttpStatus.CREATED)
-	public Equipamentos adicionar(@RequestBody Equipamentos equipamentos) {
-		return equipamentosRepository.save(equipamentos);
-	}
+    @GetMapping(produces = "application/json")
+    public List<Object> listar() {
+        return equipamentosService.listarEquipamentos();
+    }
+
+    @PostMapping
+    public ResponseEntity<?> adicionar(@RequestBody Equipamentos equipamentos) {
+        try {
+            ResponseEntity<?> response = equipamentosService.adicionarEquipamento(equipamentos);
+            return response;
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao adicionar equipamento");
+        }
+    }
+
+    @PutMapping("/{patrimonio}")
+    public ResponseEntity<?> atualizarEquipamento(@PathVariable Long patrimonio, @RequestBody Equipamentos equipamentoAtualizado) {
+        return equipamentosService.atualizarEquipamento(patrimonio, equipamentoAtualizado);
+    }
+
+    @PatchMapping("/{patrimonio}")
+    public ResponseEntity<?> atualizarParcialEquipamento(
+            @PathVariable Long patrimonio,
+            @RequestBody Map<String, Object> camposAtualizados) {
+        return equipamentosService.atualizarParcialEquipamento(patrimonio, camposAtualizados);
+    }
+
+    @DeleteMapping("/{patrimonio}")
+    public ResponseEntity<String> deletarEquipamento(@PathVariable Long patrimonio) {
+        return equipamentosService.deletarEquipamento(patrimonio);
+    }
 }

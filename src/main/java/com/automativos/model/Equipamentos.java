@@ -2,6 +2,7 @@ package com.automativos.model;
 
 import java.util.Objects;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Equipamentos {
 	@Column (nullable = false)
 	private String modelo;
 	
-	@Column (nullable = false)
+	@Column
 	private String serialnumber;
 	
 	@Column (nullable = false)
