@@ -17,11 +17,13 @@ public class EquipamentosController {
     @Autowired
     private EquipamentosService equipamentosService;
 
+    // GET
     @GetMapping(produces = "application/json")
     public List<Object> listar() {
         return equipamentosService.listarEquipamentos();
     }
 
+    // POST
     @PostMapping
     public ResponseEntity<?> adicionar(@RequestBody Equipamentos equipamentos) {
         try {
@@ -32,11 +34,13 @@ public class EquipamentosController {
         }
     }
 
+    // PUT
     @PutMapping("/{patrimonio}")
     public ResponseEntity<?> atualizarEquipamento(@PathVariable Long patrimonio, @RequestBody Equipamentos equipamentoAtualizado) {
         return equipamentosService.atualizarEquipamento(patrimonio, equipamentoAtualizado);
     }
 
+    // PATCH
     @PatchMapping("/{patrimonio}")
     public ResponseEntity<?> atualizarParcialEquipamento(
             @PathVariable Long patrimonio,
@@ -44,6 +48,7 @@ public class EquipamentosController {
         return equipamentosService.atualizarParcialEquipamento(patrimonio, camposAtualizados);
     }
 
+    // DELETE
     @DeleteMapping("/{patrimonio}")
     public ResponseEntity<String> deletarEquipamento(@PathVariable Long patrimonio) {
         return equipamentosService.deletarEquipamento(patrimonio);

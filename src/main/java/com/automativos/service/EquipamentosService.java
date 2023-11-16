@@ -25,6 +25,7 @@ public class EquipamentosService {
             List<Equipamentos> equipamentos = equipamentosRepository.findAll();
             List<Object> result = new ArrayList<>();
 
+            //Tratamtto para exibição adequada do GET
             for (Equipamentos equipamento : equipamentos) {
                 List<Object> equipamentosValues = new ArrayList<>();
                 equipamentosValues.add(equipamento.getPatrimonio());
@@ -38,7 +39,7 @@ public class EquipamentosService {
 
             return result;
         } catch (Exception e) {
-            // Tratar exceção de forma adequada (pode logar, retornar erro personalizado, etc.)
+            // Tratamento de exceção
             throw new RuntimeException("Erro ao listar equipamentos", e);
         }
     }
@@ -55,7 +56,7 @@ public class EquipamentosService {
             Equipamentos equipamentoSalvo = equipamentosRepository.save(equipamento);
             return ResponseEntity.ok(equipamentoSalvo);
         } catch (Exception e) {
-            // Tratar exceção de forma adequada (pode logar, retornar erro personalizado, etc.)
+            // Tratamento de exceção
             throw new RuntimeException("Erro ao adicionar equipamento", e);
         }
     }
@@ -88,10 +89,10 @@ public class EquipamentosService {
 
             equipamentosRepository.save(equipamentoExistente);
 
-            // Pode retornar o equipamento atualizado, se necessário
+            // Retorna equipamento atualizado
             return ResponseEntity.ok(equipamentoExistente);
         } catch (Exception e) {
-            // Tratar exceção de forma adequada (pode logar, retornar erro personalizado, etc.)
+            // Tratamento de exceção
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar equipamento.");
         }
     }
@@ -141,10 +142,10 @@ public class EquipamentosService {
 
             equipamentosRepository.save(equipamentoExistente);
 
-            // Pode retornar o equipamento atualizado, se necessário
+            // Retorna o equipamento atualizado
             return ResponseEntity.ok(equipamentoExistente);
         } catch (Exception e) {
-            // Tratar exceção de forma adequada (pode logar, retornar erro personalizado, etc.)
+            // Tratamento de exceção
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar parcialmente equipamento.");
         }
     }
@@ -164,7 +165,7 @@ public class EquipamentosService {
 
             return ResponseEntity.ok("Equipamento excluído com sucesso.");
         } catch (Exception e) {
-            // Tratar exceção de forma adequada (pode logar, retornar erro personalizado, etc.)
+            // Tratamento de exceção
             throw new RuntimeException("Erro ao deletar equipamento", e);
         }
     }

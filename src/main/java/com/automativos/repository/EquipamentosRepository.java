@@ -10,6 +10,7 @@ import java.util.Optional;
 @Repository
 public interface EquipamentosRepository extends JpaRepository<Equipamentos, Long> {
 	
+	//Verificação de Existência pelo serialnumber
 	boolean existsBySerialnumber(String serialnumber);
 	Optional<Equipamentos> findBySerialnumber(String serialnumber);
 	

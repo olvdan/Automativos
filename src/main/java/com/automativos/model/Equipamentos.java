@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Equipamentos {
 
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long patrimonio;
@@ -32,6 +33,7 @@ public class Equipamentos {
 	@Column (nullable = false)
 	private String usuario;
 
+	// Getters and Setters
 	public Long getPatrimonio() {
 		return patrimonio;
 	}
@@ -80,6 +82,7 @@ public class Equipamentos {
 		this.usuario = usuario;
 	}
 
+	// Hashcode e equals
 	@Override
 	public int hashCode() {
 		return Objects.hash(patrimonio);
