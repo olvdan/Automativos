@@ -1,8 +1,8 @@
-<br />
 <div align="center">
   <a href="https://github.com/olvdan/Automativos">
-    <img src="images/Automativos-logo.png" alt="Logo" width="113" height="64">
+    <img src="images/Automativos-logo.png" alt="Logo" width="452" height="256">
   </a>
+</div>
 
 ## Descrição do Projeto
 <p align="center">A Automativos é uma aplicação desenvolvida para facilitar a administração e o acompanhamento dos ativos de uma empresa. Essa REST API oferece funcionalidades abrangentes para gerenciar informações sobre os ativos, permitindo a criação, atualização, exclusão e consulta de dados relacionados aos recursos da empresa.</p>
@@ -135,7 +135,7 @@ git clone https://github.com/olvdan/Automativos.git
 > Link do projeto:  [(link)](https://github.com/olvdan/Automativos.git)
 
 
-## Agradecimentos: 🎓
+## Agradecimentos:
 
 [**Universidade São Francisco - (USF)**](https://www.usf.edu.br/)
 
